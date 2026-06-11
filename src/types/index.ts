@@ -56,11 +56,14 @@ export interface Order {
   status: OrderStatus
   type: BookType
   reservedAt?: string
+  appointmentSetAt?: string
+  deliveringAt?: string
   completedAt?: string
   pickupLocation?: string
   appointmentTime?: string
   rating?: number
   comment?: string
+  reportReason?: string
   createdAt: string
 }
 

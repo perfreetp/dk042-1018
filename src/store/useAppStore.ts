@@ -27,13 +27,14 @@ interface AppState {
   setActiveChat: (chat: ChatSession | null) => void
   updateOrderStatus: (orderId: string, status: Order['status']) => void
   rateOrder: (orderId: string, rating: number, comment: string) => void
-  reportOrder: (orderId: string) => void
+  reportOrder: (orderId: string, reason: string) => void
   addBook: (book: Book) => void
   searchBooks: (keyword: string) => Book[]
   createOrder: (book: Book) => Order
   addChatMessage: (sessionId: string, message: Omit<ChatMessage, 'id' | 'timestamp' | 'isRead'>) => void
   removePriceAlert: (alertId: string) => void
   removeShelfItem: (itemId: string) => void
+  updateOrderAppointment: (orderId: string, pickupLocation: string, appointmentTime: string) => void
 }
 
 const currentUser: User = {
@@ -122,16 +123,22 @@ export const useAppStore = create<AppState>((set, get) => ({
 
   setActiveChat: (chat) => set({ activeChat: chat }),
 
-  updateOrderStatus: (orderId, status) => set((state) => ({
-    orders: state.orders.map(o => o.id === orderId ? { ...o, status } : o)
-  })),
+  updateOrderStatus: (orderId, status) => set((state) => {
+    const now = new Date().toISOString().slice(0, 16).replace('T', ' ')
+    const patch: Partial<Order> = { status }
+    if (status === 'reserved') patch.reservedAt = now
+    if (status === 'delivering') { patch.appointmentSetAt = now; patch.deliveringAt = now }
+    if (status === 'completed') patch.completedAt = now
+    return { orders: state.orders.map(o => o.id === orderId ? { ...o, ...patch } : o) }
+  }),
 
-  rateOrder: (orderId, rating, comment) => set((state) => ({
-    orders: state.orders.map(o => o.id === orderId ? { ...o, rating, comment, status: 'completed' } : o)
-  })),
+  rateOrder: (orderId, rating, comment) => set((state) => {
+    const now = new Date().toISOString().slice(0, 16).replace('T', ' ')
+    return { orders: state.orders.map(o => o.id === orderId ? { ...o, rating, comment, status: 'completed' as const, completedAt: now } : o) }
+  }),
 
-  reportOrder: (orderId) => set((state) => ({
-    orders: state.orders.map(o => o.id === orderId ? { ...o, status: 'reported' } : o)
+  reportOrder: (orderId, reason) => set((state) => ({
+    orders: state.orders.map(o => o.id === orderId ? { ...o, status: 'reported' as const, reportReason: reason } : o)
   })),
 
   addBook: (book) => set((state) => ({
@@ -212,7 +219,11 @@ export const useAppStore = create<AppState>((set, get) => ({
         : state.activeChat
       return { chats: sessions, activeChat: active }
     })
-  }
+  },
+
+  updateOrderAppointment: (orderId, pickupLocation, appointmentTime) => set((state) => ({
+    orders: state.orders.map(o => o.id === orderId ? { ...o, pickupLocation, appointmentTime } : o)
+  }))
 }))
 
 export default useAppStore
