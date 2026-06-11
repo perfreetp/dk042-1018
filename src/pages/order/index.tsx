@@ -13,7 +13,9 @@ const STATUS_TABS: { label: string; value: OrderStatus | 'all' }[] = [
   { label: '待确认', value: 'pending' },
   { label: '已预留', value: 'reserved' },
   { label: '待交付', value: 'delivering' },
-  { label: '已完成', value: 'completed' }
+  { label: '已完成', value: 'completed' },
+  { label: '已取消', value: 'cancelled' },
+  { label: '举报中', value: 'reported' }
 ]
 
 const OrderPage: React.FC = () => {
@@ -86,16 +88,23 @@ const OrderPage: React.FC = () => {
   }
 
   const showRatingModal = () => {
-    Taro.showModal({
-      title: '评价订单',
-      editable: true,
-      placeholderText: '写下你的交易体验...',
+    Taro.showActionSheet({
+      itemList: ['⭐⭐⭐⭐⭐ 非常满意', '⭐⭐⭐⭐ 比较满意', '⭐⭐⭐ 一般', '⭐⭐ 不太满意', '⭐ 非常不满'],
       success: (res) => {
-        if (res.confirm && ratingOrderId) {
-          rateOrder(ratingOrderId, rating, res.content || '好评！')
-          setRatingOrderId(null)
-          Taro.showToast({ title: '评价成功', icon: 'success' })
-        }
+        const starRating = 5 - res.tapIndex
+        setRating(starRating)
+        Taro.showModal({
+          title: `评价订单（${'★'.repeat(starRating)}${'☆'.repeat(5 - starRating)}）`,
+          editable: true,
+          placeholderText: '写下你的交易体验，帮助其他同学...',
+          success: (res2) => {
+            if (res2.confirm && ratingOrderId) {
+              rateOrder(ratingOrderId, starRating, res2.content || '好评！')
+              setRatingOrderId(null)
+              Taro.showToast({ title: '评价成功', icon: 'success' })
+            }
+          }
+        })
       }
     })
   }
@@ -221,6 +230,12 @@ const OrderPage: React.FC = () => {
                         <View className={styles.detailRow}>
                           <Text className={styles.detailIcon}>⭐</Text>
                           <Text>{'★'.repeat(order.rating)}{'☆'.repeat(5 - order.rating)}</Text>
+                        </View>
+                      )}
+                      {order.comment && (
+                        <View className={styles.detailRow}>
+                          <Text className={styles.detailIcon}>💬</Text>
+                          <Text className={styles.commentText}>{order.comment}</Text>
                         </View>
                       )}
                     </View>

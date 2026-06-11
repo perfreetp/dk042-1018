@@ -20,7 +20,26 @@ const ProfilePage: React.FC = () => {
   const unreadCount = chats.reduce((sum, c) => sum + c.unreadCount, 0)
 
   const handleNav = (page: string, desc: string) => {
-    Taro.showToast({ title: `${desc}功能`, icon: 'none' })
+    switch (page) {
+      case 'shelf':
+        Taro.navigateTo({ url: '/pages/shelf/index' })
+        break
+      case 'favorites':
+        Taro.navigateTo({ url: '/pages/favorites/index' })
+        break
+      case 'history':
+        Taro.navigateTo({ url: '/pages/history/index' })
+        break
+      case 'alerts':
+      case 'alert-list':
+        Taro.navigateTo({ url: '/pages/price-alert/index' })
+        break
+      case 'buy':
+        Taro.navigateTo({ url: '/pages/publish/index' })
+        break
+      default:
+        Taro.showToast({ title: `${desc}功能`, icon: 'none' })
+    }
   }
 
   const handlePublish = () => {

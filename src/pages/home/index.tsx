@@ -28,6 +28,12 @@ const HomePage: React.FC = () => {
     if (filterOptions.college) {
       result = result.filter(b => b.college === filterOptions.college)
     }
+    if (filterOptions.course) {
+      result = result.filter(b => b.course === filterOptions.course)
+    }
+    if (filterOptions.edition) {
+      result = result.filter(b => b.edition === filterOptions.edition)
+    }
     if (filterOptions.condition) {
       result = result.filter(b => b.condition === filterOptions.condition)
     }
@@ -63,7 +69,7 @@ const HomePage: React.FC = () => {
     setFilterOptions(newOpts)
   }
 
-  const hasAnyFilter = filterOptions.type || filterOptions.college || filterOptions.condition
+  const hasAnyFilter = filterOptions.type || filterOptions.college || filterOptions.course || filterOptions.edition || filterOptions.condition
 
   const hotTags = ['高数', '数据结构', '计算机', '经济学', '英语', '有机化学', '算法', '大学物理']
 
@@ -157,6 +163,18 @@ const HomePage: React.FC = () => {
                     <Text className={styles.filterClose}>×</Text>
                   </View>
                 )}
+                {filterOptions.course && (
+                  <View className={styles.filterActiveTag} onClick={() => clearFilter('course')}>
+                    课程：{filterOptions.course}
+                    <Text className={styles.filterClose}>×</Text>
+                  </View>
+                )}
+                {filterOptions.edition && (
+                  <View className={styles.filterActiveTag} onClick={() => clearFilter('edition')}>
+                    {filterOptions.edition}
+                    <Text className={styles.filterClose}>×</Text>
+                  </View>
+                )}
                 {filterOptions.condition && (
                   <View className={styles.filterActiveTag} onClick={() => clearFilter('condition')}>
                     {filterOptions.condition === 'new' ? '全新' : filterOptions.condition === 'like-new' ? '几乎全新' : filterOptions.condition === 'good' ? '良好' : filterOptions.condition === 'fair' ? '一般' : '破旧'}
@@ -165,7 +183,7 @@ const HomePage: React.FC = () => {
                 )}
               </>
             ) : (
-              <Text className={styles.filterPlaceholder}>筛选：学院、课程、新旧程度</Text>
+              <Text className={styles.filterPlaceholder}>筛选：学院、课程、版次、新旧程度</Text>
             )}
           </View>
           <View className={styles.filterBtn} onClick={() => setShowFilter(!showFilter)}>

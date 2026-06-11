@@ -6,7 +6,12 @@ export default defineAppConfig({
     'pages/profile/index',
     'pages/detail/index',
     'pages/publish/index',
-    'pages/search/index'
+    'pages/search/index',
+    'pages/chat-detail/index',
+    'pages/shelf/index',
+    'pages/favorites/index',
+    'pages/history/index',
+    'pages/price-alert/index'
   ],
   window: {
     backgroundTextStyle: 'light',

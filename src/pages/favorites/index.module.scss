@@ -1,0 +1,184 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  display: flex;
+  flex-direction: column;
+}
+
+.listContainer {
+  flex: 1;
+  padding: $spacing-lg $page-padding 40rpx;
+}
+
+.listHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-lg;
+}
+
+.listTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+}
+
+.listCount {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+.countNum {
+  color: $color-primary;
+  font-weight: $font-weight-semibold;
+  margin: 0 4rpx;
+}
+
+.bookList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.card {
+  position: relative;
+  background: $color-bg-card;
+  border-radius: 16rpx;
+  padding: $spacing-lg;
+  box-shadow: $shadow-card;
+  display: flex;
+  gap: $spacing-lg;
+  transition: all $transition-base;
+
+  &:active {
+    transform: scale(0.99);
+    box-shadow: $shadow-card-hover;
+  }
+}
+
+.imageWrap {
+  width: 200rpx;
+  height: 280rpx;
+  border-radius: $radius-md;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: $color-bg-hover;
+}
+
+.bookImage {
+  width: 100%;
+  height: 100%;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 0;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  padding-right: 60rpx;
+}
+
+.titleRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: $spacing-sm;
+}
+
+.title {
+  flex: 1;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  line-height: $line-height-tight;
+  @include text-ellipsis-multi(2);
+}
+
+.typeTag {
+  flex-shrink: 0;
+}
+
+.meta {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  display: flex;
+  flex-direction: column;
+  gap: 4rpx;
+}
+
+.metaRow {
+  @include text-ellipsis;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-xs;
+  margin-top: $spacing-xs;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: $spacing-md;
+}
+
+.priceWrap {
+  display: flex;
+  align-items: baseline;
+  gap: $spacing-xs;
+}
+
+.price {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $color-price;
+}
+
+.originalPrice {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  text-decoration: line-through;
+}
+
+.free {
+  color: $color-primary-dark;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+}
+
+.deleteBtn {
+  position: absolute;
+  top: $spacing-md;
+  right: $spacing-md;
+  width: 56rpx;
+  height: 56rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba($color-error, 0.1);
+  border-radius: 50%;
+  transition: all $transition-fast;
+  z-index: 2;
+
+  &:active {
+    background: rgba($color-error, 0.25);
+    transform: scale(0.9);
+  }
+}
+
+.deleteIcon {
+  font-size: 28rpx;
+  color: $color-error;
+  line-height: 1;
+}

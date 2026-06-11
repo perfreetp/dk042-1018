@@ -9,7 +9,7 @@ import classnames from 'classnames'
 import styles from './index.module.scss'
 
 const DetailPage: React.FC = () => {
-  const { currentBook, toggleFavorite, isFavorite, currentUser } = useAppStore()
+  const { currentBook, toggleFavorite, isFavorite, currentUser, createOrder } = useAppStore()
   const [activeImg, setActiveImg] = useState(0)
 
   useDidShow(() => {
@@ -44,13 +44,15 @@ const DetailPage: React.FC = () => {
       Taro.showToast({ title: '这是你发布的书哦', icon: 'none' })
       return
     }
+    const actionText = book.type === 'sell' ? '购买' : book.type === 'buy' ? '提供此书' : '换书'
     Taro.showModal({
-      title: '确认预留',
-      content: `确定要以 ¥${book.price} 的价格预留《${book.title}》吗？`,
-      confirmText: '确认预留',
+      title: `确认${actionText}`,
+      content: `确定要以 ¥${book.price} 的价格${actionText}《${book.title}》吗？\n取书地点：${book.pickupLocations[0] || '待商议'}\n交易对象：${book.seller.name}`,
+      confirmText: `确认${actionText}`,
       success: (res) => {
         if (res.confirm) {
-          Taro.showToast({ title: '预留成功，请等待卖家确认', icon: 'success' })
+          const order = createOrder(book)
+          Taro.showToast({ title: `${actionText}成功，订单已生成`, icon: 'success' })
           setTimeout(() => Taro.switchTab({ url: '/pages/order/index' }), 1500)
         }
       }

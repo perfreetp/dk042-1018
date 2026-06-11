@@ -1,0 +1,186 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  display: flex;
+  flex-direction: column;
+}
+
+.tabBar {
+  display: flex;
+  align-items: center;
+  padding: 0 $page-padding;
+  background: $color-bg-card;
+  box-shadow: $shadow-card;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.tabItem {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-md 0;
+  position: relative;
+}
+
+.tabText {
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  font-weight: $font-weight-medium;
+  transition: color $transition-fast;
+}
+
+.tabTextActive {
+  color: $color-primary;
+  font-weight: $font-weight-semibold;
+}
+
+.tabIndicator {
+  position: absolute;
+  bottom: 0;
+  width: 48rpx;
+  height: 6rpx;
+  background: linear-gradient(90deg, $color-primary 0%, $color-primary-dark 100%);
+  border-radius: $radius-round;
+}
+
+.scrollContent {
+  flex: 1;
+  padding: $spacing-lg $page-padding 40rpx;
+}
+
+.bookList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.bookCard {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-card;
+  overflow: hidden;
+}
+
+.cardMain {
+  display: flex;
+  padding: $spacing-md;
+  gap: $spacing-md;
+}
+
+.bookImage {
+  width: 180rpx;
+  height: 240rpx;
+  border-radius: $radius-sm;
+  flex-shrink: 0;
+  background: $color-bg-page;
+}
+
+.bookInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+  min-width: 0;
+}
+
+.titleRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: $spacing-sm;
+}
+
+.bookTitle {
+  flex: 1;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  @include text-ellipsis-multi(2);
+  line-height: $line-height-tight;
+}
+
+.addedTime {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: 4rpx;
+  margin-top: auto;
+}
+
+.priceSymbol {
+  font-size: $font-size-sm;
+  color: $color-price;
+  font-weight: $font-weight-semibold;
+}
+
+.priceValue {
+  font-size: $font-size-xl;
+  color: $color-price;
+  font-weight: $font-weight-bold;
+}
+
+.originalPrice {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  text-decoration: line-through;
+  margin-left: $spacing-xs;
+}
+
+.actionBar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: $spacing-sm;
+  padding: 0 $spacing-md $spacing-md;
+}
+
+.actionBtn {
+  height: $button-height-sm;
+  padding: 0 $spacing-lg;
+  border-radius: $radius-button;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btnPrimary {
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-dark 100%);
+}
+
+.btnPrimaryText {
+  font-size: $font-size-sm;
+  color: $color-text-white;
+  font-weight: $font-weight-medium;
+}
+
+.btnSecondary {
+  background: rgba($color-primary, 0.08);
+  border: 2rpx solid rgba($color-primary, 0.2);
+}
+
+.btnSecondaryText {
+  font-size: $font-size-sm;
+  color: $color-primary;
+  font-weight: $font-weight-medium;
+}
+
+.btnDanger {
+  background: rgba($color-error, 0.08);
+  border: 2rpx solid rgba($color-error, 0.2);
+}
+
+.btnDangerText {
+  font-size: $font-size-sm;
+  color: $color-error;
+  font-weight: $font-weight-medium;
+}

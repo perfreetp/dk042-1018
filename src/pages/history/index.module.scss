@@ -1,0 +1,243 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-md $page-padding;
+  background: $color-bg-card;
+  box-shadow: $shadow-card;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.headerTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+}
+
+.clearBtn {
+  padding: $spacing-sm $spacing-md;
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  border-radius: $radius-button;
+  background: rgba($color-error, 0.08);
+  transition: all $transition-fast;
+
+  &:active {
+    background: rgba($color-error, 0.15);
+    transform: scale(0.96);
+  }
+}
+
+.clearBtnIcon {
+  font-size: 24rpx;
+}
+
+.clearBtnText {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-error;
+}
+
+.listContainer {
+  flex: 1;
+  padding: $spacing-lg $page-padding 40rpx;
+}
+
+.statsBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-md $spacing-lg;
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-dark 100%);
+  border-radius: $radius-lg;
+  margin-bottom: $spacing-lg;
+  box-shadow: 0 4rpx 16rpx rgba($color-primary, 0.25);
+}
+
+.statsInfo {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+}
+
+.statsIcon {
+  font-size: 48rpx;
+  line-height: 1;
+}
+
+.statsText {
+  display: flex;
+  flex-direction: column;
+  gap: 4rpx;
+}
+
+.statsLabel {
+  font-size: $font-size-sm;
+  color: rgba($color-text-white, 0.9);
+}
+
+.statsCount {
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-bold;
+  color: $color-text-white;
+  line-height: 1.2;
+
+  .countNum {
+    font-size: 52rpx;
+    margin: 0 4rpx;
+  }
+}
+
+.statsHint {
+  font-size: $font-size-xs;
+  color: rgba($color-text-white, 0.85);
+  padding: $spacing-xs $spacing-sm;
+  background: rgba($color-text-white, 0.15);
+  border-radius: $radius-button;
+}
+
+.bookList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.card {
+  position: relative;
+  background: $color-bg-card;
+  border-radius: 16rpx;
+  padding: $spacing-lg;
+  box-shadow: $shadow-card;
+  display: flex;
+  gap: $spacing-lg;
+  transition: all $transition-base;
+
+  &:active {
+    transform: scale(0.99);
+    box-shadow: $shadow-card-hover;
+  }
+}
+
+.imageWrap {
+  width: 180rpx;
+  height: 250rpx;
+  border-radius: $radius-md;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: $color-bg-hover;
+}
+
+.bookImage {
+  width: 100%;
+  height: 100%;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 0;
+  gap: $spacing-sm;
+}
+
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  padding-right: 60rpx;
+}
+
+.title {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  line-height: $line-height-tight;
+  @include text-ellipsis;
+}
+
+.meta {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  display: flex;
+  flex-direction: column;
+  gap: 4rpx;
+}
+
+.metaRow {
+  @include text-ellipsis-multi(2);
+  line-height: $line-height-tight;
+}
+
+.priceWrap {
+  display: flex;
+  align-items: baseline;
+  gap: $spacing-xs;
+  margin-top: $spacing-xs;
+}
+
+.price {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $color-price;
+}
+
+.free {
+  color: $color-primary-dark;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+}
+
+.sideContent {
+  position: absolute;
+  top: $spacing-lg;
+  right: $spacing-lg;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: $spacing-md;
+  height: calc(100% - #{$spacing-lg} * 2);
+  justify-content: space-between;
+}
+
+.viewedAt {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  text-align: right;
+  line-height: $line-height-tight;
+}
+
+.deleteBtn {
+  width: 56rpx;
+  height: 56rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba($color-text-tertiary, 0.1);
+  border-radius: 50%;
+  transition: all $transition-fast;
+  z-index: 2;
+
+  &:active {
+    background: rgba($color-error, 0.15);
+    transform: scale(0.9);
+  }
+}
+
+.deleteIcon {
+  font-size: 28rpx;
+  color: $color-text-tertiary;
+  line-height: 1;
+}

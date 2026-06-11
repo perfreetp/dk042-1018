@@ -30,7 +30,7 @@ const ChatPage: React.FC = () => {
 
   const handleChatClick = (chat) => {
     setActiveChat(chat)
-    Taro.showToast({ title: `进入和${chat.userName}的对话`, icon: 'none' })
+    Taro.navigateTo({ url: '/pages/chat-detail/index' })
   }
 
   const formatTime = (timeStr: string) => {

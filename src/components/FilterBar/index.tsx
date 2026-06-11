@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { View, Text, Button } from '@tarojs/components'
 import classnames from 'classnames'
-import { COLLEGES, CONDITIONS, BOOK_TYPES, BookCondition, BookType, FilterOptions } from '@/types'
+import { COLLEGES, COURSES, EDITIONS, CONDITIONS, BOOK_TYPES, BookCondition, BookType, FilterOptions } from '@/types'
 import styles from './index.module.scss'
 
 interface FilterBarProps {
@@ -10,6 +10,8 @@ interface FilterBarProps {
   onConfirm: () => void
 }
 
+type FilterKey = 'type' | 'college' | 'course' | 'edition' | 'condition'
+
 const FilterBar: React.FC<FilterBarProps> = ({ value, onChange, onConfirm }) => {
   const [localValue, setLocalValue] = useState<FilterOptions>(value)
 
@@ -17,12 +19,9 @@ const FilterBar: React.FC<FilterBarProps> = ({ value, onChange, onConfirm }) => 
     setLocalValue({ ...localValue, type: localValue.type === type ? undefined : type })
   }
 
-  const handleCollegeChange = (college: string) => {
-    setLocalValue({ ...localValue, college: localValue.college === college ? undefined : college })
-  }
-
-  const handleConditionChange = (cond: BookCondition) => {
-    setLocalValue({ ...localValue, condition: localValue.condition === cond ? undefined : cond })
+  const handleTagToggle = (key: Exclude<FilterKey, 'type'>, tagValue: string) => {
+    const cur = (localValue as any)[key]
+    setLocalValue({ ...localValue, [key]: cur === tagValue ? undefined : tagValue })
   }
 
   const handleConfirm = () => {
@@ -35,9 +34,9 @@ const FilterBar: React.FC<FilterBarProps> = ({ value, onChange, onConfirm }) => 
     onChange({})
   }
 
-  const handleResetTag = (key: 'type' | 'college' | 'condition') => {
+  const handleResetTag = (key: FilterKey) => {
     const newValue = { ...localValue }
-    delete newValue[key]
+    delete (newValue as any)[key]
     setLocalValue(newValue)
   }
 
@@ -67,9 +66,49 @@ const FilterBar: React.FC<FilterBarProps> = ({ value, onChange, onConfirm }) => 
             <View
               key={college}
               className={classnames(styles.tagItem, localValue.college === college && styles.active)}
-              onClick={() => handleCollegeChange(college)}
+              onClick={() => handleTagToggle('college', college)}
             >
               {college}
+            </View>
+          ))}
+        </View>
+      </View>
+
+      <View className={styles.filterRow}>
+        <View className={styles.label}>
+          <Text>对应课程</Text>
+          {localValue.course && (
+            <Text className={styles.resetBtn} onClick={() => handleResetTag('course')}>清除</Text>
+          )}
+        </View>
+        <View className={styles.tagsWrap}>
+          {COURSES.map((course) => (
+            <View
+              key={course}
+              className={classnames(styles.tagItem, localValue.course === course && styles.active)}
+              onClick={() => handleTagToggle('course', course)}
+            >
+              {course}
+            </View>
+          ))}
+        </View>
+      </View>
+
+      <View className={styles.filterRow}>
+        <View className={styles.label}>
+          <Text>教材版次</Text>
+          {localValue.edition && (
+            <Text className={styles.resetBtn} onClick={() => handleResetTag('edition')}>清除</Text>
+          )}
+        </View>
+        <View className={styles.tagsWrap}>
+          {EDITIONS.map((edition) => (
+            <View
+              key={edition}
+              className={classnames(styles.tagItem, localValue.edition === edition && styles.active)}
+              onClick={() => handleTagToggle('edition', edition)}
+            >
+              {edition}
             </View>
           ))}
         </View>
@@ -87,7 +126,7 @@ const FilterBar: React.FC<FilterBarProps> = ({ value, onChange, onConfirm }) => 
             <View
               key={item.value}
               className={classnames(styles.tagItem, localValue.condition === item.value && styles.active)}
-              onClick={() => handleConditionChange(item.value)}
+              onClick={() => handleTagToggle('condition', item.value)}
             >
               {item.label}
             </View>

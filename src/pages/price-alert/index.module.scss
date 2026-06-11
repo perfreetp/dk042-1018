@@ -1,0 +1,154 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  display: flex;
+  flex-direction: column;
+}
+
+.listContainer {
+  flex: 1;
+  padding: $spacing-lg $page-padding 40rpx;
+}
+
+.headerBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-lg;
+}
+
+.statsText {
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+
+  .statsNum {
+    color: $color-primary;
+    font-weight: $font-weight-bold;
+    margin: 0 4rpx;
+  }
+}
+
+.addBtn {
+  @include button-reset;
+  height: $button-height-sm;
+  padding: 0 $spacing-lg;
+  background: $color-primary;
+  color: $color-text-white;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  border-radius: $radius-button;
+  transition: all $transition-fast;
+
+  &:active {
+    background: $color-primary-dark;
+    transform: scale(0.96);
+  }
+}
+
+.alertList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.alertCard {
+  position: relative;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  box-shadow: $shadow-card;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-lg;
+  transition: all $transition-base;
+
+  &:active {
+    transform: scale(0.99);
+    box-shadow: $shadow-card-hover;
+  }
+}
+
+.cardLeft {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.cardTop {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.bookTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  line-height: $line-height-tight;
+  @include text-ellipsis;
+}
+
+.bookIsbn {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  @include text-ellipsis;
+}
+
+.cardBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.priceInfo {
+  display: flex;
+  align-items: baseline;
+  gap: 4rpx;
+}
+
+.priceYen {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-primary;
+  line-height: 1;
+}
+
+.targetPrice {
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-bold;
+  color: $color-primary;
+  line-height: 1;
+}
+
+.createdTime {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.cardRight {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.cancelBtn {
+  @include button-reset;
+  height: 60rpx;
+  padding: 0 $spacing-md;
+  background: rgba($color-error, 0.08);
+  color: $color-error;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  border-radius: $radius-button;
+  transition: all $transition-fast;
+
+  &:active {
+    background: rgba($color-error, 0.18);
+    transform: scale(0.96);
+  }
+}

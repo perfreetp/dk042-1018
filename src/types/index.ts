@@ -143,6 +143,33 @@ export const COLLEGES = [
   '艺术设计学院'
 ]
 
+export const COURSES = [
+  '数据结构',
+  '高等数学',
+  '微观经济学',
+  '大学英语',
+  '大学物理',
+  '有机化学',
+  '中国古代文学',
+  '宪法学',
+  '线性代数',
+  '内科学',
+  '设计心理学',
+  '算法设计与分析'
+]
+
+export const EDITIONS = [
+  '第2版',
+  '第3版',
+  '第4版',
+  '第6版',
+  '第7版',
+  '第8版',
+  '第9版',
+  '修订版',
+  '原书第3版'
+]
+
 export const CONDITIONS: { label: string; value: BookCondition }[] = [
   { label: '全新', value: 'new' },
   { label: '几乎全新', value: 'like-new' },

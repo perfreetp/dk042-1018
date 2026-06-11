@@ -1,0 +1,219 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  display: flex;
+  flex-direction: column;
+}
+
+.bookHeader {
+  background: $color-bg-card;
+  padding: $spacing-md $page-padding;
+  box-shadow: $shadow-card;
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+}
+
+.bookThumb {
+  width: 88rpx;
+  height: 112rpx;
+  border-radius: $radius-sm;
+  background: $color-bg-hover;
+  flex-shrink: 0;
+}
+
+.bookInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  overflow: hidden;
+}
+
+.bookTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  @include text-ellipsis;
+}
+
+.bookDesc {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  @include text-ellipsis;
+}
+
+.arrowIcon {
+  font-size: $font-size-lg;
+  color: $color-text-tertiary;
+  flex-shrink: 0;
+}
+
+.messageList {
+  flex: 1;
+  padding: $spacing-lg $page-padding;
+  box-sizing: border-box;
+}
+
+.messageItem {
+  display: flex;
+  margin-bottom: $spacing-lg;
+  align-items: flex-end;
+
+  &.mine {
+    justify-content: flex-end;
+  }
+}
+
+.avatar {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: $radius-round;
+  flex-shrink: 0;
+  background: $color-bg-hover;
+}
+
+.messageContent {
+  max-width: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+
+  .mine & {
+    align-items: flex-end;
+  }
+}
+
+.bubble {
+  padding: $spacing-md $spacing-lg;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-card;
+  word-break: break-all;
+  line-height: $line-height-normal;
+
+  .mine & {
+    background: $color-primary;
+    color: $color-text-white;
+  }
+
+  :not(.mine) & {
+    background: $color-bg-card;
+    color: $color-text-primary;
+  }
+}
+
+.bubbleText {
+  font-size: $font-size-md;
+}
+
+.bubbleMeta {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding-top: $spacing-sm;
+  border-top: 2rpx solid rgba(255, 255, 255, 0.2);
+  margin-top: $spacing-sm;
+
+  :not(.mine) & {
+    border-top-color: $color-divider;
+  }
+}
+
+.metaIcon {
+  font-size: $font-size-md;
+}
+
+.metaLabel {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  opacity: 0.9;
+
+  :not(.mine) & {
+    color: $color-primary;
+    opacity: 1;
+  }
+}
+
+.metaValue {
+  font-size: $font-size-sm;
+  margin-top: $spacing-xs;
+}
+
+.timeText {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  padding: 0 $spacing-sm;
+}
+
+.leftGap {
+  width: 88rpx;
+}
+
+.rightGap {
+  width: 88rpx;
+}
+
+.toolbar {
+  background: $color-bg-card;
+  box-shadow: $shadow-float;
+  padding: $spacing-md $page-padding;
+  display: flex;
+  gap: $spacing-md;
+}
+
+.toolBtn {
+  flex: 1;
+  height: $button-height-md;
+  border-radius: $radius-button;
+  background: $color-bg-hover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-xs;
+  font-size: $font-size-sm;
+  color: $color-primary-dark;
+  font-weight: $font-weight-medium;
+}
+
+.toolIcon {
+  font-size: $font-size-lg;
+}
+
+.inputBar {
+  background: $color-bg-card;
+  padding: $spacing-md $page-padding;
+  padding-bottom: calc($spacing-md + env(safe-area-inset-bottom));
+  display: flex;
+  gap: $spacing-md;
+  align-items: center;
+  border-top: 2rpx solid $color-divider;
+}
+
+.input {
+  flex: 1;
+  height: $button-height-md;
+  padding: 0 $spacing-lg;
+  border-radius: $radius-button;
+  background: $color-bg-page;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+}
+
+.sendBtn {
+  height: $button-height-md;
+  padding: 0 $spacing-xl;
+  border-radius: $radius-button;
+  background: $color-primary;
+  color: $color-text-white;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:active {
+    background: $color-primary-dark;
+  }
+}
