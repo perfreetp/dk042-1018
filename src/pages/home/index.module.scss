@@ -1,0 +1,298 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  padding-bottom: 40rpx;
+}
+
+.header {
+  background: linear-gradient(180deg, $color-primary 0%, $color-primary-dark 100%);
+  padding: 0 $page-padding $spacing-xl;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -100rpx;
+    right: -80rpx;
+    width: 300rpx;
+    height: 300rpx;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -60rpx;
+    left: 40%;
+    width: 200rpx;
+    height: 200rpx;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+  }
+}
+
+.headerTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-lg 0 $spacing-md;
+  position: relative;
+  z-index: 1;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.logoIcon {
+  font-size: 44rpx;
+}
+
+.logoText {
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-bold;
+  color: $color-text-white;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  gap: 4rpx;
+  padding: 8rpx 20rpx;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: $radius-button;
+}
+
+.locationIcon {
+  font-size: 24rpx;
+}
+
+.locationText {
+  font-size: $font-size-xs;
+  color: $color-text-white;
+}
+
+.banner {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  margin-top: $spacing-md;
+  position: relative;
+  z-index: 1;
+  gap: $spacing-lg;
+}
+
+.bannerIcon {
+  font-size: 64rpx;
+  flex-shrink: 0;
+}
+
+.bannerContent {
+  flex: 1;
+}
+
+.bannerTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-white;
+  margin-bottom: 6rpx;
+}
+
+.bannerDesc {
+  font-size: $font-size-xs;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.publishBtn {
+  padding: 12rpx 28rpx;
+  background: $color-text-white;
+  color: $color-primary-dark;
+  border-radius: $radius-button;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  flex-shrink: 0;
+  @include button-reset;
+
+  &:active {
+    transform: scale(0.96);
+    background: rgba(255, 255, 255, 0.9);
+  }
+}
+
+.content {
+  padding: 0 $page-padding;
+  margin-top: -$spacing-lg;
+  position: relative;
+  z-index: 2;
+}
+
+.quickEntries {
+  display: flex;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg 0;
+  margin-bottom: $spacing-md;
+  box-shadow: $shadow-card;
+}
+
+.entryItem {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-sm;
+  transition: all $transition-fast;
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.entryIcon {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: $radius-lg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40rpx;
+}
+
+.entryIcon1 { background: linear-gradient(135deg, #DCFCE7 0%, #86EFAC 100%); }
+.entryIcon2 { background: linear-gradient(135deg, #FEF3C7 0%, #FCD34D 100%); }
+.entryIcon3 { background: linear-gradient(135deg, #DBEAFE 0%, #93C5FD 100%); }
+.entryIcon4 { background: linear-gradient(135deg, #FCE7F3 0%, #F9A8D4 100%); }
+
+.entryText {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  font-weight: $font-weight-medium;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: $spacing-lg 0 $spacing-md;
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.sectionTitleIcon {
+  width: 6rpx;
+  height: 32rpx;
+  background: linear-gradient(180deg, $color-primary 0%, $color-primary-dark 100%);
+  border-radius: $radius-xs;
+}
+
+.sectionTitleText {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.sectionMore {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  display: flex;
+  align-items: center;
+  gap: 4rpx;
+}
+
+.hotTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-md;
+}
+
+.hotTag {
+  padding: 10rpx 24rpx;
+  background: $color-bg-card;
+  border-radius: $radius-button;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  border: 2rpx solid $color-border;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.04);
+  transition: all $transition-fast;
+
+  &:active {
+    transform: scale(0.96);
+    border-color: $color-primary-light;
+    background: $color-tag-bg;
+    color: $color-primary-dark;
+  }
+}
+
+.filterToggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-md $spacing-lg;
+  margin-bottom: $spacing-md;
+  box-shadow: $shadow-card;
+}
+
+.filterInfo {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  flex: 1;
+  flex-wrap: wrap;
+}
+
+.filterActiveTag {
+  padding: 6rpx 16rpx;
+  background: $color-tag-bg;
+  color: $color-primary-dark;
+  border-radius: $radius-sm;
+  font-size: $font-size-xs;
+  display: flex;
+  align-items: center;
+  gap: 6rpx;
+}
+
+.filterClose {
+  font-size: 20rpx;
+  color: $color-text-tertiary;
+  margin-left: 4rpx;
+}
+
+.filterPlaceholder {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+.filterBtn {
+  display: flex;
+  align-items: center;
+  gap: 6rpx;
+  padding: 8rpx 20rpx;
+  background: $color-bg-hover;
+  border-radius: $radius-button;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  flex-shrink: 0;
+}
+
+.filterBtnIcon {
+  font-size: 24rpx;
+}
+
+.bookList {
+  padding-top: 8rpx;
+}

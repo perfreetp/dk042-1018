@@ -1,0 +1,47 @@
+@use '@/styles/variables.scss' as *;
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4rpx 16rpx;
+  border-radius: $radius-sm;
+  font-size: $font-size-xs;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.primary {
+  background: $color-tag-bg;
+  color: $color-tag-text;
+}
+
+.gold {
+  background: $color-gold-bg;
+  color: $color-gold-text;
+}
+
+.gray {
+  background: $color-bg-hover;
+  color: $color-text-secondary;
+}
+
+.orange {
+  background: rgba(234, 88, 12, 0.1);
+  color: $color-price;
+}
+
+.blue {
+  background: rgba(59, 130, 246, 0.1);
+  color: $color-info;
+}
+
+.active {
+  background: $color-primary;
+  color: $color-text-white;
+}
+
+.large {
+  padding: 8rpx 24rpx;
+  font-size: $font-size-sm;
+  border-radius: $radius-md;
+}

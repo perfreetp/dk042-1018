@@ -1,0 +1,406 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  padding-bottom: 40rpx;
+}
+
+.header {
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-dark 100%);
+  padding: $spacing-xl $page-padding 120rpx;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -80rpx;
+    right: -60rpx;
+    width: 280rpx;
+    height: 280rpx;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -40rpx;
+    left: 30%;
+    width: 180rpx;
+    height: 180rpx;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+  }
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: $spacing-lg;
+  position: relative;
+  z-index: 1;
+}
+
+.avatar {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: $radius-round;
+  border: 6rpx solid rgba(255, 255, 255, 0.3);
+  background: $color-bg-card;
+  flex-shrink: 0;
+}
+
+.userDetail {
+  flex: 1;
+  min-width: 0;
+}
+
+.userNameRow {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  margin-bottom: 8rpx;
+}
+
+.userName {
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-bold;
+  color: $color-text-white;
+  @include text-ellipsis;
+  max-width: 300rpx;
+}
+
+.creditBadge {
+  display: flex;
+  align-items: center;
+  gap: 4rpx;
+  padding: 4rpx 16rpx;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: $radius-button;
+  flex-shrink: 0;
+}
+
+.creditIcon {
+  font-size: 20rpx;
+}
+
+.creditText {
+  font-size: 20rpx;
+  color: $color-text-white;
+  font-weight: $font-weight-medium;
+}
+
+.userMeta {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  font-size: $font-size-xs;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 8rpx;
+}
+
+.userCollege {
+  @include text-ellipsis;
+  max-width: 200rpx;
+}
+
+.settingsBtn {
+  font-size: 40rpx;
+  color: $color-text-white;
+  padding: $spacing-sm;
+}
+
+.statsCard {
+  display: flex;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  margin: -80rpx $page-padding $spacing-md;
+  padding: $spacing-lg 0;
+  box-shadow: $shadow-float;
+  position: relative;
+  z-index: 2;
+}
+
+.statItem {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6rpx;
+  position: relative;
+
+  &:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 20%;
+    height: 60%;
+    width: 2rpx;
+    background: $color-divider;
+  }
+}
+
+.statValue {
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+}
+
+.statLabel {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.content {
+  padding: 0 $page-padding;
+}
+
+.section {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  margin-bottom: $spacing-md;
+  overflow: hidden;
+  box-shadow: $shadow-card;
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-lg $spacing-lg $spacing-md;
+}
+
+.sectionTitleText {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.sectionMore {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.quickGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $spacing-md 0;
+  padding: 0 0 $spacing-lg;
+}
+
+.gridItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-xs;
+  transition: all $transition-fast;
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.gridIcon {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: $radius-lg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40rpx;
+  margin-bottom: 4rpx;
+}
+
+.gridIcon1 { background: linear-gradient(135deg, #DCFCE7 0%, #86EFAC 100%); }
+.gridIcon2 { background: linear-gradient(135deg, #FEF3C7 0%, #FCD34D 100%); }
+.gridIcon3 { background: linear-gradient(135deg, #DBEAFE 0%, #93C5FD 100%); }
+.gridIcon4 { background: linear-gradient(135deg, #FCE7F3 0%, #F9A8D4 100%); }
+.gridIcon5 { background: linear-gradient(135deg, #E0E7FF 0%, #A5B4FC 100%); }
+.gridIcon6 { background: linear-gradient(135deg, #FEE2E2 0%, #FCA5A5 100%); }
+.gridIcon7 { background: linear-gradient(135deg, #CCFBF1 0%, #6EE7B7 100%); }
+.gridIcon8 { background: linear-gradient(135deg, #FEF9C3 0%, #FDE047 100%); }
+
+.gridText {
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-lg;
+  border-top: 2rpx solid $color-divider;
+  transition: all $transition-fast;
+
+  &:first-child {
+    border-top: none;
+  }
+
+  &:active {
+    background: $color-bg-hover;
+  }
+}
+
+.listIcon {
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: $radius-md;
+  background: $color-tag-bg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  flex-shrink: 0;
+}
+
+.listContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.listTitle {
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  font-weight: $font-weight-medium;
+}
+
+.listDesc {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  margin-top: 4rpx;
+}
+
+.listArrow {
+  font-size: $font-size-md;
+  color: $color-text-disabled;
+  flex-shrink: 0;
+}
+
+.badge {
+  min-width: 36rpx;
+  height: 36rpx;
+  padding: 0 12rpx;
+  background: $color-error;
+  color: $color-text-white;
+  font-size: 22rpx;
+  font-weight: $font-weight-semibold;
+  border-radius: $radius-round;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.shelfPreview {
+  padding: 0 $spacing-lg $spacing-lg;
+}
+
+.shelfList {
+  display: flex;
+  gap: $spacing-md;
+  overflow-x: auto;
+  @include scroll-x-container;
+  padding-bottom: 8rpx;
+}
+
+.shelfItem {
+  @include scroll-x-item(200rpx);
+  display: inline-flex;
+  flex-direction: column;
+  background: $color-bg-hover;
+  border-radius: $radius-md;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.shelfBookImg {
+  width: 200rpx;
+  height: 260rpx;
+  background: $color-bg-hover;
+}
+
+.shelfBookInfo {
+  padding: $spacing-sm;
+}
+
+.shelfBookTitle {
+  font-size: $font-size-xs;
+  color: $color-text-primary;
+  font-weight: $font-weight-medium;
+  @include text-ellipsis;
+}
+
+.shelfStatus {
+  display: inline-flex;
+  padding: 2rpx 10rpx;
+  border-radius: 4rpx;
+  font-size: 20rpx;
+  margin-top: 4rpx;
+
+  &.selling {
+    background: $color-tag-bg;
+    color: $color-tag-text;
+  }
+  &.sold {
+    background: $color-gold-bg;
+    color: $color-gold-text;
+  }
+}
+
+.historyList {
+  padding: 0 $spacing-lg $spacing-lg;
+}
+
+.historyItem {
+  display: flex;
+  gap: $spacing-md;
+  padding: $spacing-md 0;
+  border-bottom: 2rpx solid $color-divider;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.historyImg {
+  width: 100rpx;
+  height: 140rpx;
+  border-radius: $radius-sm;
+  background: $color-bg-hover;
+  flex-shrink: 0;
+}
+
+.historyInfo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.historyTitle {
+  font-size: $font-size-sm;
+  color: $color-text-primary;
+  font-weight: $font-weight-medium;
+  @include text-ellipsis-multi(2);
+}
+
+.historyMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.historyPrice {
+  font-size: $font-size-sm;
+  color: $color-price;
+  font-weight: $font-weight-semibold;
+}
+
+.historyTime {
+  font-size: 20rpx;
+  color: $color-text-tertiary;
+}

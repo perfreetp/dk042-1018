@@ -1,0 +1,188 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  display: flex;
+  flex-direction: column;
+}
+
+.searchHeader {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-md $page-padding;
+  background: $color-bg-card;
+  box-shadow: $shadow-card;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.searchBox {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  height: 72rpx;
+  padding: 0 $spacing-md;
+  background: $color-bg-page;
+  border-radius: $radius-button;
+  gap: $spacing-sm;
+}
+
+.searchIcon {
+  font-size: 32rpx;
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+.searchInput {
+  flex: 1;
+  height: 72rpx;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+}
+
+.clearBtn {
+  width: 40rpx;
+  height: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $color-text-tertiary;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.clearIcon {
+  font-size: 20rpx;
+  color: $color-text-white;
+  line-height: 1;
+}
+
+.scanBtn {
+  width: 72rpx;
+  height: 72rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $color-bg-page;
+  border-radius: $radius-button;
+  flex-shrink: 0;
+}
+
+.scanIcon {
+  font-size: 36rpx;
+}
+
+.searchBtn {
+  padding: 0 $spacing-lg;
+  height: 72rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-dark 100%);
+  border-radius: $radius-button;
+  flex-shrink: 0;
+}
+
+.searchBtnText {
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: $color-text-white;
+}
+
+.scrollContent {
+  flex: 1;
+  padding: $spacing-lg $page-padding 40rpx;
+}
+
+.section {
+  margin-bottom: $spacing-xl;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-md;
+}
+
+.sectionTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+}
+
+.fireIcon {
+  font-size: 28rpx;
+}
+
+.clearHistoryBtn {
+  padding: $spacing-xs $spacing-sm;
+}
+
+.clearHistoryText {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+.tagList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+}
+
+.historyTag {
+  padding: $spacing-sm $spacing-md;
+  background: $color-bg-card;
+  border-radius: $radius-button;
+  box-shadow: $shadow-card;
+}
+
+.historyTagText {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+.resultsSection {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.resultsHeader {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  flex-wrap: wrap;
+}
+
+.resultsCount {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+.countNum {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-primary;
+  margin: 0 4rpx;
+}
+
+.keywordTag {
+  padding: 4rpx $spacing-sm;
+  background: rgba($color-primary, 0.1);
+  border-radius: $radius-sm;
+}
+
+.keywordText {
+  font-size: $font-size-xs;
+  color: $color-primary;
+}
+
+.bookList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}

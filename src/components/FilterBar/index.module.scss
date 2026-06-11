@@ -1,0 +1,128 @@
+@use '@/styles/variables.scss' as *;
+
+.wrap {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-md;
+  box-shadow: $shadow-card;
+}
+
+.typeTabs {
+  display: flex;
+  background: $color-bg-hover;
+  border-radius: $radius-button;
+  padding: 4rpx;
+  margin-bottom: $spacing-lg;
+}
+
+.typeTab {
+  flex: 1;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $radius-button;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  font-weight: $font-weight-medium;
+  transition: all $transition-fast;
+
+  &.active {
+    background: $color-bg-card;
+    color: $color-primary-dark;
+    box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.06);
+    font-weight: $font-weight-semibold;
+  }
+}
+
+.filterRow {
+  margin-bottom: $spacing-md;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.label {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  margin-bottom: $spacing-sm;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.resetBtn {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.tagsWrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+}
+
+.tagItem {
+  padding: 10rpx 24rpx;
+  border-radius: $radius-button;
+  background: $color-bg-hover;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  border: 2rpx solid transparent;
+  transition: all $transition-fast;
+  white-space: nowrap;
+
+  &.active {
+    background: $color-tag-bg;
+    color: $color-primary-dark;
+    border-color: $color-primary-light;
+    font-weight: $font-weight-medium;
+  }
+
+  &:active {
+    transform: scale(0.96);
+  }
+}
+
+.actionBar {
+  display: flex;
+  gap: $spacing-md;
+  margin-top: $spacing-lg;
+  padding-top: $spacing-md;
+  border-top: 2rpx solid $color-divider;
+}
+
+.confirmBtn, .resetAllBtn {
+  flex: 1;
+  height: $button-height-md;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $radius-button;
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  transition: all $transition-base;
+  @include button-reset;
+}
+
+.confirmBtn {
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-dark 100%);
+  color: $color-text-white;
+
+  &:active {
+    opacity: 0.9;
+    transform: scale(0.98);
+  }
+}
+
+.resetAllBtn {
+  background: $color-bg-hover;
+  color: $color-text-secondary;
+  border: 2rpx solid $color-border;
+
+  &:active {
+    background: $color-border;
+  }
+}

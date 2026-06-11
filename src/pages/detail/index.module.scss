@@ -1,0 +1,339 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  padding-bottom: 160rpx;
+}
+
+.swiperWrap {
+  width: 100%;
+  height: 600rpx;
+  background: $color-bg-card;
+  position: relative;
+}
+
+.swiperImg {
+  width: 100%;
+  height: 600rpx;
+}
+
+.favBtn {
+  position: absolute;
+  top: 32rpx;
+  right: 32rpx;
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: $radius-round;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36rpx;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+
+  &.favorited {
+    background: rgba(239, 68, 68, 0.9);
+  }
+}
+
+.indicator {
+  position: absolute;
+  bottom: 24rpx;
+  right: 32rpx;
+  padding: 4rpx 16rpx;
+  background: rgba(0, 0, 0, 0.5);
+  color: $color-text-white;
+  font-size: $font-size-xs;
+  border-radius: $radius-button;
+  z-index: 10;
+}
+
+.section {
+  background: $color-bg-card;
+  margin: $spacing-md $page-padding;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  box-shadow: $shadow-card;
+}
+
+.bookHeader {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.titleRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: $spacing-md;
+}
+
+.bookTitle {
+  flex: 1;
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  line-height: $line-height-tight;
+}
+
+.typeTag {
+  flex-shrink: 0;
+}
+
+.authorRow {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  flex-wrap: wrap;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+.authorText {
+  @include text-ellipsis;
+  max-width: 300rpx;
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: $spacing-md;
+  margin-top: $spacing-md;
+}
+
+.price {
+  font-size: 56rpx;
+  font-weight: $font-weight-bold;
+  color: $color-price;
+}
+
+.originalPrice {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  text-decoration: line-through;
+}
+
+.priceRange {
+  font-size: $font-size-xs;
+  color: $color-primary-dark;
+  background: $color-tag-bg;
+  padding: 4rpx 16rpx;
+  border-radius: $radius-sm;
+}
+
+.tagRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+  margin-top: $spacing-md;
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-md;
+}
+
+.sectionTitleIcon {
+  width: 6rpx;
+  height: 28rpx;
+  background: linear-gradient(180deg, $color-primary 0%, $color-primary-dark 100%);
+  border-radius: $radius-xs;
+}
+
+.sectionTitleText {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-md $spacing-lg;
+}
+
+.infoItem {
+  display: flex;
+  flex-direction: column;
+  gap: 6rpx;
+}
+
+.infoLabel {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.infoValue {
+  font-size: $font-size-sm;
+  color: $color-text-primary;
+  font-weight: $font-weight-medium;
+  @include text-ellipsis;
+}
+
+.descText {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  line-height: $line-height-loose;
+}
+
+.locationList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.locationItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-sm $spacing-md;
+  background: $color-bg-hover;
+  border-radius: $radius-md;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+.locationIcon {
+  font-size: 28rpx;
+  color: $color-primary;
+}
+
+.sellerCard {
+  display: flex;
+  align-items: center;
+  gap: $spacing-lg;
+}
+
+.sellerAvatar {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: $radius-round;
+  background: $color-bg-hover;
+  flex-shrink: 0;
+}
+
+.sellerInfo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6rpx;
+}
+
+.sellerNameRow {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.sellerName {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  @include text-ellipsis;
+}
+
+.creditBadge {
+  display: flex;
+  align-items: center;
+  gap: 4rpx;
+  padding: 2rpx 12rpx;
+  background: $color-gold-bg;
+  color: $color-gold-text;
+  font-size: 20rpx;
+  border-radius: $radius-sm;
+}
+
+.sellerMeta {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.chatBtn {
+  height: 64rpx;
+  padding: 0 $spacing-lg;
+  background: $color-bg-hover;
+  color: $color-primary-dark;
+  border: 2rpx solid $color-primary-light;
+  border-radius: $radius-button;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all $transition-base;
+  @include button-reset;
+
+  &:active {
+    transform: scale(0.96);
+    background: $color-tag-bg;
+  }
+}
+
+.bottomBar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: $color-bg-card;
+  padding: $spacing-md $page-padding;
+  padding-bottom: calc($spacing-md + env(safe-area-inset-bottom));
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  box-shadow: 0 -4rpx 20rpx rgba(0, 0, 0, 0.06);
+  z-index: 100;
+}
+
+.actionBtn {
+  flex: 1;
+  height: $button-height-lg;
+  border-radius: $radius-button;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  transition: all $transition-base;
+  @include button-reset;
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.secondaryBtn {
+  flex: 1;
+  background: linear-gradient(135deg, #FEF3C7 0%, #FCD34D 100%);
+  color: $color-gold-text;
+}
+
+.primaryBtn {
+  flex: 2;
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-dark 100%);
+  color: $color-text-white;
+  box-shadow: 0 6rpx 20rpx rgba(34, 197, 94, 0.3);
+}
+
+.statsRow {
+  display: flex;
+  align-items: center;
+  gap: $spacing-lg;
+  margin-top: $spacing-sm;
+  padding-top: $spacing-md;
+  border-top: 2rpx solid $color-divider;
+}
+
+.statItem {
+  display: flex;
+  align-items: center;
+  gap: 6rpx;
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}

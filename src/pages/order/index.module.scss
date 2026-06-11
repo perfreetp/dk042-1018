@@ -1,0 +1,278 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  padding-bottom: 40rpx;
+}
+
+.roleTabs {
+  display: flex;
+  background: $color-bg-card;
+  padding: $spacing-md $page-padding;
+  gap: $spacing-lg;
+  border-bottom: 2rpx solid $color-divider;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.roleTab {
+  flex: 1;
+  height: 72rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $color-bg-hover;
+  border-radius: $radius-button;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  font-weight: $font-weight-medium;
+  transition: all $transition-fast;
+
+  &.active {
+    background: linear-gradient(135deg, $color-primary 0%, $color-primary-dark 100%);
+    color: $color-text-white;
+    font-weight: $font-weight-semibold;
+    box-shadow: 0 4rpx 12rpx rgba(34, 197, 94, 0.25);
+  }
+}
+
+.statusTabs {
+  display: flex;
+  background: $color-bg-card;
+  padding: 0 $page-padding;
+  overflow-x: auto;
+  white-space: nowrap;
+  border-bottom: 2rpx solid $color-divider;
+  @include scroll-x-container;
+}
+
+.statusTab {
+  @include scroll-x-item(auto);
+  padding: $spacing-md $spacing-lg;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  font-weight: $font-weight-medium;
+  position: relative;
+  transition: all $transition-fast;
+  display: inline-flex;
+  align-items: center;
+  gap: 8rpx;
+
+  &.active {
+    color: $color-primary-dark;
+    font-weight: $font-weight-semibold;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40rpx;
+      height: 6rpx;
+      background: $color-primary;
+      border-radius: 3rpx;
+    }
+  }
+}
+
+.statusDot {
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 50%;
+  background: $color-text-disabled;
+
+  .active & {
+    background: $color-primary;
+  }
+}
+
+.orderList {
+  padding: $spacing-md $page-padding;
+}
+
+.orderCard {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  margin-bottom: $spacing-md;
+  box-shadow: $shadow-card;
+  overflow: hidden;
+}
+
+.orderHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-md $spacing-lg;
+  border-bottom: 2rpx solid $color-divider;
+}
+
+.orderInfo {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.orderId {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.orderStatus {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+
+  &.pending { color: $color-warning; }
+  &.reserved { color: $color-info; }
+  &.delivering { color: $color-primary-dark; }
+  &.completed { color: $color-success; }
+  &.cancelled { color: $color-text-tertiary; }
+  &.reported { color: $color-error; }
+}
+
+.orderBody {
+  display: flex;
+  gap: $spacing-lg;
+  padding: $spacing-lg;
+}
+
+.bookImage {
+  width: 160rpx;
+  height: 220rpx;
+  border-radius: $radius-md;
+  background: $color-bg-hover;
+  flex-shrink: 0;
+}
+
+.bookInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 0;
+}
+
+.bookTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  @include text-ellipsis-multi(2);
+}
+
+.bookMeta {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  margin-top: 6rpx;
+}
+
+.orderDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 6rpx;
+  margin-top: $spacing-sm;
+}
+
+.detailRow {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+}
+
+.detailIcon {
+  font-size: 24rpx;
+  flex-shrink: 0;
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-top: $spacing-sm;
+}
+
+.roleLabel {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.price {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $color-price;
+}
+
+.orderFooter {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: $spacing-sm;
+  padding: $spacing-md $spacing-lg;
+  border-top: 2rpx solid $color-divider;
+  background: $color-bg-hover;
+}
+
+.btn {
+  height: 64rpx;
+  padding: 0 $spacing-lg;
+  border-radius: $radius-button;
+  font-size: $font-size-sm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all $transition-base;
+  @include button-reset;
+  white-space: nowrap;
+
+  &:active {
+    transform: scale(0.96);
+  }
+}
+
+.btnOutline {
+  background: $color-bg-card;
+  color: $color-text-secondary;
+  border: 2rpx solid $color-border;
+
+  &:active {
+    background: $color-bg-hover;
+  }
+}
+
+.btnPrimary {
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-dark 100%);
+  color: $color-text-white;
+
+  &:active {
+    opacity: 0.9;
+  }
+}
+
+.btnDanger {
+  background: rgba(239, 68, 68, 0.1);
+  color: $color-error;
+  border: 2rpx solid rgba(239, 68, 68, 0.3);
+
+  &:active {
+    background: rgba(239, 68, 68, 0.15);
+  }
+}
+
+.ratingStars {
+  display: flex;
+  gap: 8rpx;
+  padding: $spacing-md;
+}
+
+.star {
+  font-size: 48rpx;
+  color: $color-text-disabled;
+  transition: all $transition-fast;
+
+  &.filled {
+    color: $color-warning;
+  }
+}
